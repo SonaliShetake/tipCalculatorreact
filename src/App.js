@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React,{useState}from 'react'
+import Footer from './components/Footer'
+import InputOutput from './components/InputOutput'
+import Header from './components/Header'
 
 function App() {
+  const [customername,setCustomerName]= useState([])
+  const [totaltip, setTip] = useState([0])
+
+    const AddCustomerName=(data)=>{
+      setCustomerName([...customername,data])
+    }
+
+    const AddTip=(data)=>{
+      setTip([...totaltip,data]);
+      console.log(setTip);
+      
+    }
+    console.log(AddTip);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+       <div className ="inner">
+    <Header/>
+    <InputOutput customername={customername} AddCustomerName={AddCustomerName} totaltip={totaltip} AddTip={AddTip} />
+    <Footer/>
     </div>
-  );
+     
+    </div>
+  )
 }
 
-export default App;
+export default App
